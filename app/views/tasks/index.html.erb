@@ -1,7 +1,15 @@
-<%= link_to 'Log Out', logout_path %>
+<%= link_to 'Log Out', logout_path %><br>
 
 <%= link_to 'New Task List', new_task_list_path %>
 
 <% @user.task_lists.each do |list| %>
 	<h3><%= list.title %></h3><%= link_to 'Change Details', edit_task_list_path(list) %> <%= link_to 'Remove List', task_list_path(list), method: :delete %>
+	<% list.tasks.each do |task| %>
+		<h5><%= task.title %></h5>
+		<p><%= task.friendly_start_date %></p>
+		<p>Due on <%= task.due %></p>
+		<p><%= task.notes %></p>
+		<%= link_to 'Change Task Details', edit_task_path(task) %>
+	<% end %>
+	<%= link_to 'Add Task', new_task_list_task_path(list) %>
 <% end %>

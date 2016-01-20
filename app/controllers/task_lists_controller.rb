@@ -6,8 +6,17 @@ class TaskListsController < ApplicationController
   end
 
   def create
-    current_user.task_lists.create(task_list_params)
-    redirect_to tasks_path
+    list = current_user.task_lists.new(task_list_params)
+    if list.valid?
+      list.save
+      redirect_to tasks_path
+    else
+      flash[:red] = "Couldn't be done."
+      list.errors.full_messages.each do |message|
+        flash[:red] << message
+      end
+      redirect_to :back
+    end
   end
 
   def edit

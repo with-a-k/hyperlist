@@ -4,6 +4,14 @@ class Task < ActiveRecord::Base
   validate :no_past_dates, on: :create
   validate :linear_time
 
+  def completed?
+    status
+  end
+
+  def friendly_start_date
+    start < Date.today ? 'Began on ' + start.to_s : 'Begins on ' + start.to_s
+  end
+
   private
 
   def no_past_dates
