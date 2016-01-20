@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
   def check_cookie
     redirect_to tasks_path if cookies.signed[:session]
   end
+
+  def current_user
+    User.find(cookies.signed[:session])
+  end
 end
