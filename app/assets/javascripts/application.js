@@ -19,4 +19,5 @@ $(document).ready(function () {
 	statusChange();
 	filterName();
 	showAllInList();
+	sorters();
 });
