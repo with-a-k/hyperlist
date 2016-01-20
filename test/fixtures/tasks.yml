@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  status: false
+  notes: MyString
+  due: 2016-01-20
+  start: 2016-01-20
+
+two:
+  title: MyString
+  status: false
+  notes: MyString
+  due: 2016-01-20
+  start: 2016-01-20
