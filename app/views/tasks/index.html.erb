@@ -6,10 +6,9 @@
 	<div class="task-list" data-id="<%= list.id %>">
 		<h3><%= list.title %></h3><%= link_to 'Change Details', edit_task_list_path(list)	 %> <%= link_to 'Remove List', task_list_path(list), method: :delete %><br>
 		<div class="task-holder">
-			<span>Filter tasks in this list by title:</span><input type="text" class="filter-name"></input>
-			<br><button class="sort-title">Sort Tasks by Title</button>
-			<br><button class="sort-status">Sort Tasks by Status</button>
-			<br><button class="sort-due">Sort Tasks by Due Date</button>
+			<label>Filter tasks in this list by due date:</label><%= select :task, :filter_due, list.tasks.pluck(:due).uniq, {include_blank: true} %>
+			<label>Filter tasks in this list by starting date:</label><%= select :task, :filter_start, list.tasks.pluck(:start).uniq, {include_blank: true} %><br>
+			<%= render partial: 'filter' %>
 			<% list.tasks.each do |task| %>
 				<div class="task <%= 'hide' if task.complete? || task.future? %>" data-id="<%= task.id %>" data-status='<%= task.complete? %>' data-due="<%= task.due %>">
 					<h4 class="task-title"><%= task.title %></h4>

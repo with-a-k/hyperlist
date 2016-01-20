@@ -17,7 +17,7 @@
 
 $(document).ready(function () {
 	statusChange();
-	filterName();
+	loadFilters();
 	showAllInList();
 	sorters();
 });

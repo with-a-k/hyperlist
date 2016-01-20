@@ -1,0 +1,5 @@
+<label>Filter tasks in this list by title:</label> <input type="text" class="filter-name"></input> 
+<label>Filter tasks in this list by status:</label> <%= select :task, :filter_status, ['incomplete', 'complete', 'all'], {include_blank: false} %> 
+<br><button class="sort-title">Sort Tasks by Title</button> 
+<button class="sort-status">Sort Tasks by Status</button> 
+<button class="sort-due">Sort Tasks by Due Date</button>

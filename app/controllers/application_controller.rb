@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def any_user
-    unless current_user
+    unless cookies.signed[:session]
       flash[:red] = "You need to be logged in!"
       redirect_to root_path
     end
