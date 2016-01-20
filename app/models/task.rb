@@ -3,13 +3,23 @@ class Task < ActiveRecord::Base
   validates :title, presence: { message: 'required. '}
   validate :no_past_dates, on: :create
   validate :linear_time
+  scope :present, -> { where('start < ?', Date.today+1) }
+  scope :incomplete, -> { where(status: false) }
 
-  def completed?
+  def complete?
     status
+  end
+
+  def display_complete
+    status ? 'Completed!' : 'Incomplete'
   end
 
   def friendly_start_date
     start < Date.today ? 'Began on ' + start.to_s : 'Begins on ' + start.to_s
+  end
+
+  def future?
+    start > Date.today
   end
 
   private
