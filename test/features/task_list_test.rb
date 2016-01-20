@@ -51,4 +51,13 @@ class TaskListFeaturesTest < Capybara::Rails::TestCase
     assert_equal tasks_path, current_path
     assert_content page, "That's not yours!"
   end
+
+  test "user deletes a task list" do
+    pillar = User.create(name: "Cassius Bright", email: "divinestaff@bracerguild.com", password: "foolofason", password_confirmation: "foolofason")
+    pillar.task_lists.create(title: "Guild Jobs")
+    visit root_path
+    log_in_with("divinestaff@bracerguild.com", "foolofason")
+    click_on "Remove List"
+    refute_content page, "Guild Jobs"
+  end
 end

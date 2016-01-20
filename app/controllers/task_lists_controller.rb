@@ -1,4 +1,6 @@
 class TaskListsController < ApplicationController
+  before_action :any_user
+
   def new
     @task_list = TaskList.new()
   end
@@ -28,6 +30,16 @@ class TaskListsController < ApplicationController
       end
       redirect_to :back
     end
+  end
+
+  def destroy
+    list = TaskList.find(params[:id])
+    unless list.user == current_user
+      flash[:red] = "That's not yours!"
+      redirect_to tasks_path
+    end
+    list.destroy
+    redirect_to tasks_path
   end
 
   private
