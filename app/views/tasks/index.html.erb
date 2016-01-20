@@ -5,11 +5,13 @@
 <% @user.task_lists.each do |list| %>
 	<div class="task-list" data-id="<%= list.id %>">
 		<h3><%= list.title %></h3><%= link_to 'Change Details', edit_task_list_path(list)	 %> <%= link_to 'Remove List', task_list_path(list), method: :delete %><br>
-		<span>Filter tasks in this list by title:</span><input type="text" class="filter-name"></input>
 		<div class="task-holder">
-			<button class="sort-title">Sort Tasks by Title</button>
+			<span>Filter tasks in this list by title:</span><input type="text" class="filter-name"></input>
+			<br><button class="sort-title">Sort Tasks by Title</button>
+			<br><button class="sort-status">Sort Tasks by Status</button>
+			<br><button class="sort-due">Sort Tasks by Due Date</button>
 			<% list.tasks.each do |task| %>
-				<div class="task <%= 'hide' if task.complete? || task.future? %>" data-id="<%= task.id %>" data-status='<%= task.complete? %>'>
+				<div class="task <%= 'hide' if task.complete? || task.future? %>" data-id="<%= task.id %>" data-status='<%= task.complete? %>' data-due="<%= task.due %>">
 					<h4 class="task-title"><%= task.title %></h4>
 					<span class="status"><%= task.display_complete %></span> <button class="task-status">Toggle Status</button>
 					<p><%= task.friendly_start_date %></p>
