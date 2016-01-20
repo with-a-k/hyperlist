@@ -6,9 +6,9 @@
 	<div class="task-list" data-id="<%= list.id %>">
 		<h3><%= list.title %></h3><%= link_to 'Change Details', edit_task_list_path(list)	 %> <%= link_to 'Remove List', task_list_path(list), method: :delete %>
 		<% list.tasks.each do |task| %>
-			<div class="task <%= hide if task.complete? || task.future? %>" data-id="<%= task.id %>">
+			<div class="task <%= 'hide' if task.complete? || task.future? %>" data-id="<%= task.id %>" data-status='<%= task.complete? %>'>
 				<h5><%= task.title %></h5>
-				<p><%= task.display_complete %> <button id="task-toggle">Toggle Status</button></p>
+				<span class="status"><%= task.display_complete %></span> <button class="task-status">Toggle Status</button>
 				<p><%= task.friendly_start_date %></p>
 				<p>Due on <%= task.due %></p>
 				<p><%= task.notes %></p>
