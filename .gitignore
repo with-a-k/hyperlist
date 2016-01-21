@@ -11,3 +11,8 @@
 /log/*
 !/log/.keep
 /tmp
+rootkey.csv
+credentials.csv
+
+# Ignore application configuration
+/config/application.yml

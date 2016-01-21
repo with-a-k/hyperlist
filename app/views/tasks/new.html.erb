@@ -1,6 +1,6 @@
 <h2>New Task</h2>
 
-<%= form_for @task do |f| %>
+<%= form_for @task, multipart: true do |f| %>
 	<%= f.label :title, "Title:" %>
 	<%= f.text_field :title %><br>
 	<%= f.label :start, "Starts on:" %>
