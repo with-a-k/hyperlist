@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       cookies.signed[:session] = { value: user.id, expires: Time.now + 3600 }
       redirect_to tasks_path
     else
-      flash[:error] = "Check your credentials."
+      flash[:red] = "Check your credentials."
       redirect_to :back
     end
   end

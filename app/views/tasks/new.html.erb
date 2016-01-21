@@ -1,6 +1,6 @@
 <h2>New Task</h2>
 
-<%= form_for @task do |f| %>
+<%= form_for @task, multipart: true do |f| %>
 	<%= f.label :title, "Title:" %>
 	<%= f.text_field :title %><br>
 	<%= f.label :start, "Starts on:" %>
@@ -9,6 +9,8 @@
 	<%= f.date_select :due %><br>
 	<%= f.label :notes, "Notes:" %>
 	<%= f.text_area :notes %><br>
+	<%= f.label :attachment, "Attach a file:" %>
+	<%= f.file_field :attachment %><br>
 	<%= f.hidden_field :task_list_id, value: params[:task_list_id] %>
 	<%= f.submit "Create" %>
 <% end %>
