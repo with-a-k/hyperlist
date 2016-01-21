@@ -9,5 +9,7 @@
 	<%= f.date_select :due %><br>
 	<%= f.label :notes, "Notes:" %>
 	<%= f.text_area :notes %><br>
+	<%= f.label :attachment, "Attach a file:" %>
+	<%= f.file_field :attachment %><br>
 	<%= f.submit "Change" %>
 <% end %>

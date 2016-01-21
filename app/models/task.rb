@@ -3,6 +3,7 @@ class Task < ActiveRecord::Base
   validates :title, presence: { message: 'required. '}
   validate :no_past_dates, on: :create
   validate :linear_time
+  has_attached_file :attachment
   scope :present, -> { where('start < ?', Date.today+1) }
   scope :incomplete, -> { where(status: false) }
 
